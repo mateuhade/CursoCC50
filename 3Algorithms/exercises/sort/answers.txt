@@ -1,0 +1,12 @@
+sort1 uses: bubble
+
+How do you know?: it only performs better than the other sorting algorithms when everything is already sorted, in other cases it performs the worst
+
+sort2 uses: merge
+
+How do you know?: it performs the best in every case except the best case scenario when everything is already sorted
+
+sort3 uses: linear
+
+How do you know?: when running a best case scenario, the linear sorting takes the longest between the other two to check the array, because it checks the smallest value for every
+single array value and compares it to every value remaining.
