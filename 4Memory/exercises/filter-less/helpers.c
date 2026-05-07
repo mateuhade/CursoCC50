@@ -26,8 +26,41 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
 
 // Convert image to sepia
 void sepia(int height, int width, RGBTRIPLE image[height][width])
-{
+{   
+    RGBTRIPLE originalColors;
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            originalColors = image[i][j];
+            
 
+            if (0.393 * originalColors.rgbtRed + 0.769 * originalColors.rgbtGreen +
+            0.189 * originalColors.rgbtBlue < 255) {
+                image[i][j].rgbtRed = 0.393 * originalColors.rgbtRed + 0.769 * originalColors.rgbtGreen +
+                0.189 * originalColors.rgbtBlue;
+            }
+            else {
+                image[i][j].rgbtRed = 255;
+            }
+
+            if (0.349 * originalColors.rgbtRed + 0.686 * originalColors.rgbtGreen +
+            0.168 * originalColors.rgbtBlue < 255) {
+              image[i][j].rgbtGreen = 0.349 * originalColors.rgbtRed + 0.686 * originalColors.rgbtGreen +
+              0.168 * originalColors.rgbtBlue;
+            }
+            else {
+                image[i][j].rgbtGreen = 255;
+            }
+
+            if (0.272 * originalColors.rgbtRed + 0.534 * originalColors.rgbtGreen +
+            0.131 * originalColors.rgbtBlue < 255) {
+                image[i][j].rgbtBlue = 0.272 * originalColors.rgbtRed + 0.534 * originalColors.rgbtGreen +
+                0.131 * originalColors.rgbtBlue;
+            }
+            else {
+                image[i][j].rgbtBlue = 255;
+            }
+        }
+    }
     return;
 }
 
@@ -48,36 +81,37 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    int sumRed, sumGreen, sumBlue, averageRed, averageGreen, averageBlue, pixelAmount;
+    int pixelAmount;
+    RGBTRIPLE averages, sums;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             pixelAmount = 9;
-            sumRed = 0;
-            sumGreen = 0;
-            sumBlue = 0;
+            sums.rgbtRed = 0;
+            sums.rgbtGreen = 0;
+            sums.rgbtBlue = 0;
             for (int k = i-1; k < i+1; k++) {
                 for (int l = j-1; l < j+1; l++) {
                     if (k > height || k < 0 || l > width || l < 0) {
                         pixelAmount -= 1;
                         break;
                     }
-                    sumBlue += image[k][l].rgbtBlue;
-                    sumGreen += image[k][l].rgbtGreen;
-                    sumRed += image[k][l].rgbtRed;
+                    sums.rgbtRed += image[k][l].rgbtRed;
+                    sums.rgbtGreen += image[k][l].rgbtGreen;
+                    sums.rgbtBlue += image[k][l].rgbtBlue;
                 }
             }
 
-            averageRed = sumBlue / pixelAmount;
-            averageGreen = sumGreen / pixelAmount;
-            averageBlue = sumRed / pixelAmount;
+            averages.rgbtRed = sums.rgbtRed / pixelAmount;
+            averages.rgbtGreen = sums.rgbtGreen / pixelAmount;
+            averages.rgbtBlue = sums.rgbtBlue / pixelAmount;
             for (int k = i-1; k < i+1; k++) {
                 for (int l = j-1; l < j+1; l++) {
                     if (k > height || k < 0 || l > width || l < 0) {
                         break;
                     }
-                    image[k][l].rgbtRed = averageRed;
-                    image[k][l].rgbtGreen = averageGreen;
-                    image[k][l].rgbtBlue = averageBlue;
+                    image[k][l].rgbtRed = averages.rgbtRed;
+                    image[k][l].rgbtGreen = averages.rgbtGreen;
+                    image[k][l].rgbtBlue = averages.rgbtBlue;
                 }
             }
         }
