@@ -4,15 +4,18 @@
 void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            if (image[i][j].rgbtBlue < image[i][j].rgbtGreen && image[i][j].rgbtBlue > image[i][j].rgbtRed) {
+            if ((image[i][j].rgbtBlue < image[i][j].rgbtGreen && image[i][j].rgbtBlue > image[i][j].rgbtRed) ||
+            (image[i][j].rgbtBlue > image[i][j].rgbtGreen && image[i][j].rgbtBlue < image[i][j].rgbtRed)) {
                 image[i][j].rgbtGreen = image[i][j].rgbtBlue;
                 image[i][j].rgbtRed = image[i][j].rgbtBlue;
             }
-            else if (image[i][j].rgbtRed < image[i][j].rgbtGreen && image[i][j].rgbtRed > image[i][j].rgbtBlue) {
+            else if ((image[i][j].rgbtRed < image[i][j].rgbtGreen && image[i][j].rgbtRed > image[i][j].rgbtBlue) ||
+            (image[i][j].rgbtRed > image[i][j].rgbtGreen && image[i][j].rgbtRed < image[i][j].rgbtBlue)) {
                 image[i][j].rgbtGreen = image[i][j].rgbtRed;
                 image[i][j].rgbtBlue = image[i][j].rgbtRed;
             }
-            else if (image[i][j].rgbtGreen < image[i][j].rgbtRed && image[i][j].rgbtGreen > image[i][j].rgbtBlue) {
+            else if ((image[i][j].rgbtGreen < image[i][j].rgbtRed && image[i][j].rgbtGreen > image[i][j].rgbtBlue) ||
+            (image[i][j].rgbtGreen > image[i][j].rgbtRed && image[i][j].rgbtGreen < image[i][j].rgbtBlue)) {
                 image[i][j].rgbtRed = image[i][j].rgbtGreen;
                 image[i][j].rgbtBlue = image[i][j].rgbtGreen;
             }
@@ -23,14 +26,14 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
 
 // Convert image to sepia
 void sepia(int height, int width, RGBTRIPLE image[height][width])
-{   
-    
+{
+
     return;
 }
 
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
-{      
+{
     RGBTRIPLE swap;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < (width / 2); j++) {
@@ -44,7 +47,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
-{   
+{
     int sumRed, sumGreen, sumBlue, averageRed, averageGreen, averageBlue, pixelAmount;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
