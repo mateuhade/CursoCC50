@@ -26,38 +26,35 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
 
 // Convert image to sepia
 void sepia(int height, int width, RGBTRIPLE image[height][width])
-{   
+{
+    const int MAX_RGB_VALUE = 255;
     RGBTRIPLE originalColors;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             originalColors = image[i][j];
-            
 
-            if (0.393 * originalColors.rgbtRed + 0.769 * originalColors.rgbtGreen +
-            0.189 * originalColors.rgbtBlue < 255) {
-                image[i][j].rgbtRed = 0.393 * originalColors.rgbtRed + 0.769 * originalColors.rgbtGreen +
-                0.189 * originalColors.rgbtBlue;
+            int sepiaRed = 0.393 * originalColors.rgbtRed + 0.769 * originalColors.rgbtGreen + 0.189 * originalColors.rgbtBlue;
+            if (sepiaRed < MAX_RGB_VALUE) {
+                image[i][j].rgbtRed = sepiaRed;
             }
             else {
-                image[i][j].rgbtRed = 255;
+                image[i][j].rgbtRed = MAX_RGB_VALUE;
             }
 
-            if (0.349 * originalColors.rgbtRed + 0.686 * originalColors.rgbtGreen +
-            0.168 * originalColors.rgbtBlue < 255) {
-              image[i][j].rgbtGreen = 0.349 * originalColors.rgbtRed + 0.686 * originalColors.rgbtGreen +
-              0.168 * originalColors.rgbtBlue;
+            int sepiaGreen = 0.349 * originalColors.rgbtRed + 0.686 * originalColors.rgbtGreen + 0.168 * originalColors.rgbtBlue;
+            if (sepiaGreen < MAX_RGB_VALUE) {
+              image[i][j].rgbtGreen = sepiaGreen;
             }
             else {
-                image[i][j].rgbtGreen = 255;
+                image[i][j].rgbtGreen = MAX_RGB_VALUE;
             }
 
-            if (0.272 * originalColors.rgbtRed + 0.534 * originalColors.rgbtGreen +
-            0.131 * originalColors.rgbtBlue < 255) {
-                image[i][j].rgbtBlue = 0.272 * originalColors.rgbtRed + 0.534 * originalColors.rgbtGreen +
-                0.131 * originalColors.rgbtBlue;
+            int sepiaBlue = 0.272 * originalColors.rgbtRed + 0.534 * originalColors.rgbtGreen + 0.131 * originalColors.rgbtBlue;
+            if (sepiaBlue < MAX_RGB_VALUE) {
+                image[i][j].rgbtBlue = sepiaBlue;
             }
             else {
-                image[i][j].rgbtBlue = 255;
+                image[i][j].rgbtBlue = MAX_RGB_VALUE;
             }
         }
     }
