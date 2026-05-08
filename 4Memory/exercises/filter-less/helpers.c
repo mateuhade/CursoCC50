@@ -70,8 +70,8 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     RGBTRIPLE swap;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < (width / 2); j++) {
-            swap = image[i][width-j];
-            image[i][width-j] = image[i][j];
+            swap = image[i][width-j-1];
+            image[i][width-j-1] = image[i][j];
             image[i][j] = swap;
         }
     }
@@ -81,39 +81,35 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    int pixelAmount;
-    RGBTRIPLE averages, sums;
+
+    RGBTRIPLE copiedImage[height][width];
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            pixelAmount = 9;
-            sums.rgbtRed = 0;
-            sums.rgbtGreen = 0;
-            sums.rgbtBlue = 0;
-            for (int k = i-1; k < i+1; k++) {
-                for (int l = j-1; l < j+1; l++) {
+            copiedImage[i][j] = image[i][j];
+        }
+    }
+
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            int pixelAmount = 0;
+            int red = 0, green = 0, blue = 0;
+
+
+            for (int k = i-1; k <= i+1; k++) {
+                for (int l = j-1; l <= j+1; l++) {
                     if (k > height || k < 0 || l > width || l < 0) {
-                        pixelAmount -= 1;
-                        break;
+                        continue;
                     }
-                    sums.rgbtRed += image[k][l].rgbtRed;
-                    sums.rgbtGreen += image[k][l].rgbtGreen;
-                    sums.rgbtBlue += image[k][l].rgbtBlue;
+                    red += copiedImage[k][l].rgbtRed;
+                    green += copiedImage[k][l].rgbtGreen;
+                    blue += copiedImage[k][l].rgbtBlue;
+                    pixelAmount++;
                 }
             }
 
-            averages.rgbtRed = sums.rgbtRed / pixelAmount;
-            averages.rgbtGreen = sums.rgbtGreen / pixelAmount;
-            averages.rgbtBlue = sums.rgbtBlue / pixelAmount;
-            for (int k = i-1; k < i+1; k++) {
-                for (int l = j-1; l < j+1; l++) {
-                    if (k > height || k < 0 || l > width || l < 0) {
-                        break;
-                    }
-                    image[k][l].rgbtRed = averages.rgbtRed;
-                    image[k][l].rgbtGreen = averages.rgbtGreen;
-                    image[k][l].rgbtBlue = averages.rgbtBlue;
-                }
-            }
+            image[i][j].rgbtRed = red / pixelAmount;
+            image[i][j].rgbtGreen = green / pixelAmount;
+            image[i][j].rgbtBlue = blue / pixelAmount;
         }
     }
     return;
