@@ -1,24 +1,19 @@
 #include "helpers.h"
 
+// Detect edges
+void edges(int height, int width, RGBTRIPLE image[height][width])
+{
+    return;
+}
+
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            if ((image[i][j].rgbtBlue < image[i][j].rgbtGreen && image[i][j].rgbtBlue > image[i][j].rgbtRed) ||
-            (image[i][j].rgbtBlue > image[i][j].rgbtGreen && image[i][j].rgbtBlue < image[i][j].rgbtRed)) {
-                image[i][j].rgbtGreen = image[i][j].rgbtBlue;
-                image[i][j].rgbtRed = image[i][j].rgbtBlue;
-            }
-            else if ((image[i][j].rgbtRed < image[i][j].rgbtGreen && image[i][j].rgbtRed > image[i][j].rgbtBlue) ||
-            (image[i][j].rgbtRed > image[i][j].rgbtGreen && image[i][j].rgbtRed < image[i][j].rgbtBlue)) {
-                image[i][j].rgbtGreen = image[i][j].rgbtRed;
-                image[i][j].rgbtBlue = image[i][j].rgbtRed;
-            }
-            else if ((image[i][j].rgbtGreen < image[i][j].rgbtRed && image[i][j].rgbtGreen > image[i][j].rgbtBlue) ||
-            (image[i][j].rgbtGreen > image[i][j].rgbtRed && image[i][j].rgbtGreen < image[i][j].rgbtBlue)) {
-                image[i][j].rgbtRed = image[i][j].rgbtGreen;
-                image[i][j].rgbtBlue = image[i][j].rgbtGreen;
-            }
+            int averageColor = ((image[i][j].rgbtRed + image[i][j].rgbtGreen + image[i][j].rgbtBlue) / 3);
+            image[i][j].rgbtRed = averageColor;
+            image[i][j].rgbtGreen = averageColor;
+            image[i][j].rgbtBlue = averageColor;
         }
     }
     return;
@@ -91,9 +86,10 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             int pixelAmount = 0;
             int red = 0, green = 0, blue = 0;
 
-
+            //iterates through a 3x3 grid around a pixel in the image
             for (int k = i-1; k <= i+1; k++) {
                 for (int l = j-1; l <= j+1; l++) {
+                    //increments to l and jumps back to the start of the loop if the pixel position is invalid
                     if (k > height || k < 0 || l > width || l < 0) {
                         continue;
                     }

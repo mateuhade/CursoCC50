@@ -105,6 +105,11 @@ int main(int argc, char *argv[])
             blur(height, width, image);
             break;
 
+        // Edges
+        case 'e':
+            edges(height, width, image);
+            break;
+        
         // Grayscale
         case 'g':
             grayscale(height, width, image);
