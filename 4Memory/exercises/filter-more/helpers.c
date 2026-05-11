@@ -1,8 +1,67 @@
 #include "helpers.h"
+#include <math.h>
+
+const int MAX_RGB_VALUE = 255;
 
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
-{
+{   
+
+    RGBTRIPLE copiedImage[height][width];
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            copiedImage[i][j] = image[i][j];
+        }
+    }
+
+    int kernelX[9] = {-1, 0, 1, -2, 0, 2, -1, 0, 1};
+    int kernelY[9] = {-1, -2, -1, 0, 0, 0, 1, 2, 1};
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            int redEdgeX = 0, greenEdgeX = 0, blueEdgeX = 0;
+            int redEdgeY = 0, greenEdgeY = 0, blueEdgeY = 0;
+            int counter = 0;
+
+            //iterates through a 3x3 grid around a pixel in the image
+            for (int k = i-1; k <= i+1; k++) {
+                for (int l = j-1; l <= j+1; l++) {
+                    // Increments to l and jumps back to the start of the loop if the pixel position is invalid until
+                    // it is valid
+                    if (k >= height || k < 0 || l >= width || l < 0) {
+                        counter++;
+                        continue;
+                    }
+
+                    redEdgeX += copiedImage[k][l].rgbtRed * kernelX[counter];
+                    greenEdgeX += copiedImage[k][l].rgbtGreen * kernelX[counter];
+                    blueEdgeX += copiedImage[k][l].rgbtBlue * kernelX[counter];
+
+                    redEdgeY += copiedImage[k][l].rgbtRed * kernelY[counter];
+                    greenEdgeY += copiedImage[k][l].rgbtGreen * kernelY[counter];
+                    blueEdgeY += copiedImage[k][l].rgbtBlue * kernelY[counter];
+                    counter++;
+                }
+            }
+
+            int redEdge = (int) round(sqrt(redEdgeX* redEdgeX + redEdgeY * redEdgeY));
+            if (redEdge < MAX_RGB_VALUE) {
+                image[i][j].rgbtRed = redEdge;
+            }
+            else {image[i][j].rgbtRed = MAX_RGB_VALUE;}
+
+            int greenEdge = (int) round(sqrt(greenEdgeX * greenEdgeX + greenEdgeY * greenEdgeY));
+            if (greenEdge < MAX_RGB_VALUE) {
+                image[i][j].rgbtGreen = greenEdge;
+            }
+            else {image[i][j].rgbtGreen = MAX_RGB_VALUE;}
+
+            int blueEdge = (int) round(sqrt(blueEdgeX * blueEdgeX + blueEdgeY * blueEdgeY));
+            if (blueEdge < MAX_RGB_VALUE) {
+                image[i][j].rgbtBlue = blueEdge;
+            }
+            else {image[i][j].rgbtBlue = MAX_RGB_VALUE;}
+        }    
+    }
     return;
 }
 
@@ -22,7 +81,6 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
 // Convert image to sepia
 void sepia(int height, int width, RGBTRIPLE image[height][width])
 {
-    const int MAX_RGB_VALUE = 255;
     RGBTRIPLE originalColors;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {

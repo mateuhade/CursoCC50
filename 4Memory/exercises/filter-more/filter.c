@@ -7,7 +7,7 @@
 int main(int argc, char *argv[])
 {
     // Define allowable filters
-    char *filters = "bgrs";
+    char *filters = "begrs";
 
     // Get filter flag and check validity
     char filter = getopt(argc, argv, filters);
