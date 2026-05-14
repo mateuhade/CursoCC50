@@ -3,7 +3,9 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <string.h>
+#include <strings.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "dictionary.h"
 
@@ -23,7 +25,14 @@ node *table[N];
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    // TODO
+    unsigned int index = hash(word);
+    node *tmp = table[index];
+    while (tmp != NULL) {
+        if (strcasecmp(word, tmp->word) == 0) {
+            return true;
+        }
+        tmp = tmp->next;
+    }
     return false;
 }
 
@@ -35,26 +44,25 @@ unsigned int hash(const char *word)
 }
 
 // Loads dictionary into memory, returning true if successful, else false
-int numberOfWords;
+int numberOfWords = 0;
+bool isLoaded;
 bool load(const char *dictionary)
-{   
-    for (int i = 0; i < N; i++) {
-        table[i]->next = NULL;
-    }
-
+{  
     FILE *file = fopen(dictionary, "r");
     if (file == NULL) {
-        return false;
+        isLoaded = false;
+        return isLoaded;
     }
 
-    char *currentWord;
+    char currentWord[LENGTH+1];
     unsigned int letterIndex;
     while (fscanf(file, "%s", currentWord) != EOF) {
         numberOfWords++;
         node *newNode = malloc(sizeof(node));
         
         if (newNode == NULL) {
-            return false;
+            isLoaded = false;
+            return isLoaded;
         }
         
         newNode->next = NULL;
@@ -62,30 +70,36 @@ bool load(const char *dictionary)
 
         letterIndex = hash(currentWord);
 
-        // se tiver uma palavra onde queremos colocar
-        if (table[letterIndex]->next == NULL) {
-            table[letterIndex]->next = newNode;
-        }
-        else {
-            newNode->next = table[letterIndex]->next;
-            table[letterIndex]->next = newNode;
-        }
+        newNode->next = table[letterIndex];
+        table[letterIndex] = newNode;
     }
 
     fclose(file);
-    return true;
+    isLoaded = true;
+    return isLoaded;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
 unsigned int size(void)
 {
-    
-    return 0;
+    if (isLoaded) {
+        return numberOfWords;
+    }
+    else {
+        return 0;
+    }
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
-{
-    // TODO
-    return false;
+{   
+    for (int i = 0; i < N; i++) {
+        node *tmp1 = table[i];
+        while (tmp1 != NULL) {
+            node *tmp2 = tmp1->next;
+            free(tmp1);
+            tmp1 = tmp2;
+        }
+    }
+    return true;
 }
