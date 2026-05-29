@@ -31,3 +31,4 @@ with open("phonebook.csv", "a") as file:
 
     writer = csv.writer(file)
     writer.write([name, number])
+    writer.write(["abc", 123])

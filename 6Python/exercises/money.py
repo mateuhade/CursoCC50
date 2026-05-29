@@ -1,13 +1,34 @@
 def main ():
-    changeOwed = 0
-    while (changeOwed <= 0) or (type(changeOwed) != float):
-        changeOwed = input("Change owed: ")
-        if (changeOwed <= 0) or (type(changeOwed) != float):
-            print("Invalid amount, try again.")
+    changeOwed = ask_for_change()
 
     coinAmount = get_coin_amount(changeOwed)
 
     print(coinAmount)
+
+def is_float(value):
+    try:
+        float(value)
+        return True
+    except ValueError:
+        return False
+
+def ask_for_change():
+
+    changeOwed = input("Change owed: ")
+    isValid = False
+
+    while not isValid:
+        if not is_float(changeOwed):
+            while not is_float(changeOwed):
+                print("Invalid amount, try again.")
+                changeOwed = input("Change owed: ")
+        elif float(changeOwed) <= 0:
+            print("Invalid amount, try again.")
+            changeOwed = input("Change owed: ")
+        else:
+            isValid = True
+    return float(changeOwed)
+
 
 def get_coin_amount(currentChangeOwed):
     coinAmount = 0
