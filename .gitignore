@@ -6,3 +6,5 @@
 *.txt
 *.o
 *.directory
+*.db
+*swp
