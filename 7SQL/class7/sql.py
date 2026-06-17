@@ -26,4 +26,20 @@
 
 # And in SQL we also have functions similar to the ones we have in excel, for example:
 # AVG, COUNT, DISTINCT, LOWER, MAX, MIN, UPPER, etc.
-# [SELECT DISTINCT column FROM table]
+# [SELECT DISTINCT column FROM table], for example returns every unique value from column
+
+# SQL also has clauses like these:
+# WHERE (equivalent to an [if] statement)
+# LIKE (returns data similar to a certain data)
+# ORDER BY (order the data by a certain column)
+# LIMIT (limits how many rows are returned)
+# GROUP BY (group identical values)
+
+# For example: [SELECT DISTINCT value FROM dataSet ORDER BY value LIMIT 10;] will return
+# at most teh 10 first rows of the value column in sorted order
+
+# By using % we can refer to [0 or more] characters in a string
+# Another example:[SELECT value FROM dataSet WHERE value LIKE '%123%' ORDER BY value] will
+# return any values that contain the string "123" (61236 for example) in them ordered by value
+
+# and if we want to save our database we can use [.save fileName.db]
