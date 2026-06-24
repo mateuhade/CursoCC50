@@ -1,0 +1,52 @@
+<!--NOTE 5-->
+<!DOCTYPE lang="pt-BR">
+<html>
+    <head>
+        <!--Defines visual attributes of items in the webpage
+        #ID will modify every item in the page which has that specific ID
+        a will modify every item in the page that has the anchor tag
+        a:hover will modify the properties of every anchor in the file that happen on hovering over-->
+        <style>
+            #Pudding
+            {
+                color:orange
+            }
+
+            #duck
+            {
+                color:yellow
+            }
+
+            a
+            {
+                text-decoration: none;
+            }
+
+            a:hover
+            {
+                text-decoration: underline;
+            }
+        </style>
+
+        <title>
+            style
+        </title>
+    </head>
+
+    <body>
+        <!-- The alt attribute here works for accessibility and description of images-->
+        <!-- The source attribute says teh source of the image that will be set by the img tag-->
+        <img alt="Duck image" src="duck.jpg"> 
+
+        <!-- The anchor tag <a> gets a hyperlink reference as the link that will be attached-->
+        <p>
+            Eat <a href="duck.jpg" id="duck">Ducks</a>
+        </p>
+        <!-- Anchor tags will not work without the protocol HTTP or HTTPS-->
+        <p>
+            Love <a href="https://pudim.com.br/" id="Pudding">Puddings</a>
+        </p>
+
+
+    </body>
+</html>

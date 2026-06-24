@@ -1,0 +1,41 @@
+<!-- NOTE 2
+--------------------------------------- REQUESTS ------------------------------------------
+Requests:
+When we need a server to send some information we send it a request, that request can look
+like this:
+GET / HTTP/1.1
+Host: www.domainName.com
+
+GET: A request method that calls for the server to return some specified data
+/: The main page or main data of the IP, in case of a website, it might be the home page
+HTTP/1.1: The type of protocol and version being used by the server and host
+Host: What domain is being hosted
+
+If we search on google "cats", our browser might translate the resulting link 
+"https://www.google.com/search?q=cats" into the following request:
+GET /search?q=cats HTTPS/2
+Host: www.google.com
+
+-------------------------------------- RESPONSES -----------------------------------------
+When a protocol is performed after a request, the server will answer to the request returning
+a status like following:
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+HTTP/1.1: The protocol being performed, 1.1 is just the version of the HTTP
+200 OK: The Status Code followed by a shorthand summary of the result of the request, 200 OK
+means that the protocol was performed successfully.
+Content-Type: The type of content that is being returned, if it is a webfile, it might be
+text/html, if it is a jpeg, it might be image/jpeg, etc.
+
+Status Types: We have many common status codes that are returned after a request, some of the
+most common are:
+200 OK: Response returned successfully
+301 Moved Permanently: The host typed in should redirect to another host (http://x.com to https://x.com)
+404 Not Found: protocol requested for does not exist or was not found
+418 I'm a Teapot: protocol asks for something that the server is literally incapable of returning
+------------------------------
+
+These requests and responses are automatically managed by the browser and the router, but
+it is still useful to undersand them for debugging and error management
+-->
