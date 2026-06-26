@@ -1,0 +1,36 @@
+/* NOTE 6 -------REFERS TO CSS.HTML--------
+
+CSS (Cascading Style Sheets) similarly to HTMl is not a programming language, but a markup language
+that can be used along with HTML.
+
+Here, instead of arguments or attributes, we have properties, which are essentially the same thing
+but with a different name
+*/
+body
+{
+    color: white;
+    background-color: #1E1D36;
+    font-weight: 600;
+}
+
+/* here we have a few classes, those are attributes stored in variables
+we can utilize them to make the actual body code of the page more readable*/
+.centered
+{
+    text-align: center;
+}
+
+.large
+{
+    font-size: large; 
+}
+
+.medium
+{
+    font-size: medium;
+}
+
+.small
+{
+    font-size: small;
+}
