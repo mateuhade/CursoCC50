@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <h1> Favorite Anime </h1>
+    <form action="/register" method="post">
+
+        <input name="name" type="text" placeholder="Name">
+        <select name="Animes">
+            <option disabled selected value="">Animes</option>
+            {% for anime in animes %}
+                <option value="{{ anime }}">{{ anime }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Register">
+
+    </form>
+
+{% endblock %}
