@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block postHead %}
+<body id="coffeeFile">
+    <div class="mainContainer">
+        <div id="coffeeFormContainer">
+            <input id="coffeeInput" placeholder="Favourite type of Coffee" type="text">
+            <input id="coffeeSubmit" type="submit" value="What is my vibe?">
+        </div>
+        <h1 id="audioStatus">What vibe does my coffee give?</h1>
+        <div id="coffeeResultContainer">
+            <img src="{{url_for('static', filename='images/coffee.png')}}" id="resultImage"> 
+            <audio controls autoplay loop id="resultAudio" ></audio>
+        </div>
+    </div>
+</body>
+<script src="{{url_for('static', filename='js/coffee.js')}}"></script>
+{% endblock %}
