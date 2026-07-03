@@ -1,0 +1,50 @@
+.gameContainer {
+    width: 75vw;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(5, 7, 29, 0.75);
+    border: 3px solid antiquewhite;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;   
+}
+
+.textContainer {
+    flex-direction: column;
+}
+
+.review {
+    text-align: justify;
+    display: grid;
+    vertical-align: center;
+    margin-right: 15px;
+}
+
+.gameLogo {
+    height: 200px;
+    width: 200px;
+    align-self: center;
+    margin: 30px;
+}
+
+.gameLogo img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    border: 2px solid antiquewhite;
+}
+
+.gameLogo a {
+    object-fit: cover;
+    :hover {
+        color: blue;
+    }
+}
+
+#title {
+    display: flex;
+    margin: 20px;
+}

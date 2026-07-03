@@ -1,0 +1,52 @@
+#coffeeFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#coffeeInput {
+    background-color: rgba(5, 7, 29, 0.5);
+    border-radius: 10px;
+    color: antiquewhite;
+    width: 20vw;
+    min-width: 290px;
+    font-size: large;
+    text-align: center;
+}
+
+#coffeeSubmit {
+    background-color: rgba(5, 7, 29, 0.75);
+    border-radius: 10px;
+    color: antiquewhite;
+    width: 15vw;
+    min-width: 190px;
+    font-size: large;
+}
+
+#coffeeResultContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+#resultImage {
+    border: 5px solid rgba(5, 7, 29, 0.75);
+    border-radius: 10px;
+    height: 65vh;
+    width: 28vw;
+    object-fit: cover;
+}
+
+#resultAudio {
+    width: 28vw;
+    filter: sepia() brightness(1.05) invert() saturate(0.5) opacity(0.8);
+}
+
+#audioStatus {
+    margin-bottom: -10px;
+}

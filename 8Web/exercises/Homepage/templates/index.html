@@ -1,23 +1,27 @@
 {% extends "layout.html" %}
 
-{% block postHead %}
+{% block head %}
+<link href="{{url_for('static', filename='css/index.css')}}" rel="stylesheet">
+</head>
 <body>
-    <div class="mainContainer">
-        <img src="{{url_for('static', filename='images/pfp.png')}}" class="circleImg">
-        <header id="title">mateuhade's Homepage</header>
-        <div id="buttonContainer">
-            <a href="coffee" class="redirectButton" method="post">
-                <button> <i class="bi bi-cup-hot-fill"></i> Coffee </button>
-            </a>
-            <a href="lotl" class="redirectButton">
-                <button><i class="bi bi-gem"></i> Land Of The Lustrous</button>
-            </a>
-            <a href="games" class="redirectButton">
-                <button><i class="bi bi-controller"></i> Favourite Games</button>
-            </a>
-            <a href="https://instagram.com/mateuhade" class="redirectButton">
-                <button><i class="bi bi-instagram"></i> Instagram</button>
-            </a>
+    <div id="wrapper">
+        <div id="mainContainer">
+            <img src="{{url_for('static', filename='images/pfp.png')}}" class="circleImg">
+            <header id="title">mateuhade's Homepage</header>
+            <div id="buttonContainer">
+                <a href="coffee" class="redirectButton" method="post">
+                    <button> <i class="bi bi-cup-hot-fill"></i> Coffee </button>
+                </a>
+                <a href="lotl" class="redirectButton">
+                    <button><i class="bi bi-gem"></i> Land Of The Lustrous</button>
+                </a>
+                <a href="games" class="redirectButton">
+                    <button><i class="bi bi-controller"></i> Favourite Games</button>
+                </a>
+                <a href="https://instagram.com/mateuhade" class="redirectButton">
+                    <button><i class="bi bi-instagram"></i> Instagram</button>
+                </a>
+            </div>
         </div>
     </div>
 </body>

@@ -1,7 +1,28 @@
 {% extends "layout.html" %}
 
-{% block body %}
-
-
-
+{% block head %}
+<link href="{{url_for('static', filename='css/games.css')}}" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="mainContainer">
+            <h1 id="title">Favourite Games</h1>
+            {% for game in games %}
+            <div class="gameContainer">
+                <div class="gameLogo">
+                    <a href="{{game['gameUrl']}}">
+                        <img src="{{game['image']}}">
+                    </a>
+                </div>
+                <div class="textContainer">
+                    <h2>{{game["name"]}}</h2>
+                    <h3 class="review">{{game["review"]}}
+                        <a href="{{game[reviewUrl]}}"> <cite>{{game["credits"]}}</cite> </a>
+                    </h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
 {% endblock %}
