@@ -13,4 +13,4 @@
 *swp
 *.db
 *.o
-!*/8Web/Homepage/requirements.txt
+!*8Web/Homepage/requirements.txt
