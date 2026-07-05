@@ -1,0 +1,8 @@
+#lotlImage {
+    border: 5px solid rgba(5, 7, 29, 0.75);
+    border-radius: 10px;
+    height: 65vh;
+    width: 28vw;
+    object-fit: cover;
+    margin: 10px;
+}

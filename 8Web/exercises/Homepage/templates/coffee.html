@@ -13,11 +13,10 @@
             </div>
             <h1 id="audioStatus">What vibe does my coffee give?</h1>
             <div id="coffeeResultContainer">
-                <img src="{{url_for('static', filename='images/coffee.png')}}" id="resultImage"> 
-                <audio controls autoplay loop id="resultAudio" ></audio>
+                <img src="{{url_for('static', filename='images/coffee/coffee.png')}}" id="resultImage"> 
+                <audio id="resultAudio" class="chromeAudio" controls autoplay loop></audio>
             </div>
         </div>   
     </div>
 </body>
-
 {% endblock %}

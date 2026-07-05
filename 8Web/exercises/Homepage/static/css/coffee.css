@@ -24,6 +24,7 @@
     width: 15vw;
     min-width: 190px;
     font-size: large;
+    margin-bottom: 10px;
 }
 
 #coffeeResultContainer {
@@ -42,11 +43,3 @@
     object-fit: cover;
 }
 
-#resultAudio {
-    width: 28vw;
-    filter: sepia() brightness(1.05) invert() saturate(0.5) opacity(0.8);
-}
-
-#audioStatus {
-    margin-bottom: -10px;
-}

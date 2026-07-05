@@ -2,14 +2,16 @@
 
 {% block head %}
 <link href="{{url_for('static', filename='css/lotl.css')}}" rel="stylesheet">
-<script src="{{url_for('static', filename='js/lotl.js')}}"></script>
+<script type="module" src="{{url_for('static', filename='js/lotl.js')}}"></script>
 </head>
 <body>
+    <video id="camera" autoplay hidden></video>
     <div id="wrapper">
         <div id="mainContainer">
-            <h1>hey</h1>
+            <h1 id="audioStatus">Don't Blink.</h1>
+            <img src="../static/images/lotl/phos1.jpg" id="lotlImage">
+            <audio class="chromeAudio" id="lotlAudio" controls autoplay loop></audio>
         </div>   
     </div>
 </body>
-
 {% endblock %}

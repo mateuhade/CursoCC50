@@ -10,14 +10,14 @@
             {% for game in games %}
             <div class="gameContainer">
                 <div class="gameLogo">
-                    <a href="{{game['gameUrl']}}">
+                    <a href="{{game['gameUrl']}}"> 
                         <img src="{{game['image']}}">
                     </a>
                 </div>
                 <div class="textContainer">
                     <h2>{{game["name"]}}</h2>
                     <h3 class="review">{{game["review"]}}
-                        <a href="{{game[reviewUrl]}}"> <cite>{{game["credits"]}}</cite> </a>
+                        <a href="{{game['reviewUrl']}}"> <cite>{{game["credits"]}}</cite> </a>
                     </h3>
                 </div>
             </div>

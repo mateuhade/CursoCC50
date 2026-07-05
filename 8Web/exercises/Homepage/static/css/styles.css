@@ -9,11 +9,19 @@ body {
     font-family: 'Courier New', Courier, monospace; 
 }
 
+audio {
+    width: 28vw;
+}
+
 a {
     color: antiquewhite;
     :hover {
         cursor: pointer;
     }
+}
+
+.chromeAudio {
+    filter: sepia() brightness(1.05) invert() saturate(0.5) opacity(0.8);
 }
 
 #mainContainer {
