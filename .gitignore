@@ -2,10 +2,14 @@
 !*/
 !*.*
 *__pycache__/
+*node_modules/
+*package.json
+*.directory
+*.lock
 *.bmp
 *.out
 *.txt
-*.o
-*.directory
-*.db
+*.swp
 *swp
+*.db
+*.o
