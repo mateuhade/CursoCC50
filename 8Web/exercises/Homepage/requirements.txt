@@ -1,0 +1,9 @@
+# JavaScript / Frontend dependencies (CDN-loaded)
+@mediapipe/tasks-vision==0.10.35 via https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/
+
+# Runtime model asset (fetched at runtime)
+https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
+
+# Browser APIs required (client-side)
+- camera access
+- requestAnimationFrame
