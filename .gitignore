@@ -13,4 +13,6 @@
 *swp
 *.db
 *.o
-!*8Web/Homepage/requirements.txt
+
+# inclusions and exceptions
+!requirements.txt
