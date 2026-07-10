@@ -1,0 +1,5 @@
+Flask
+Flask-session
+
+# In python we can install libraries easily by either running "pip install [libraryName]" for a specific library,
+# or "pip install -r requirements.txt" for all the libraries in a requirements.txt
