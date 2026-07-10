@@ -19,6 +19,7 @@
 # here we make sure that a table called shows.db exists
 open("shows.db", "w").close()
 # here we tell the library which database we will intereact with (sqlite:/// prefix is mandatory)
+from cs50 import SQL
 db = SQL("sqlite:///shows.db")
 db.execute("CREATE TABLE shows (id INTEGER, title TEXT, PRIMARY KEY(id))")
 db.execute("CREATE TABLE genres (id INTEGER, genre TEXT, PRIMARY KEY(id))")
