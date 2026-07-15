@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <h1 class="mb-5">Current Balance: ${{ userBalance | round(2) }}   |   Total Investments: ${{ totalInvestments | round(2) }}</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Quantity</th>
+                <th>Price Per Stock</th>
+                <th>Total Stock Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock["symbol"] }}</td>
+                    <td>{{ stock["quantity"] }}</td>
+                    <td>${{ stock["price"] | round(2) }}</td>
+                    <td>${{ stock["totalPrice"] | round(2) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
