@@ -1,7 +1,7 @@
 # Curso CC50
 
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Harvard_University_shield.png" alt="Harvard" width="15%" height="15%"> <img src="https://velezreyesmas.com/wp-content/uploads/2024/06/EstudarLogo.png" alt="Harvard" height="150" object-fit="cover">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Harvard_University_shield.png" alt="Logo da Universidade de Harvard" width="150" height="15%"> <img src="https://velezreyesmas.com/wp-content/uploads/2024/06/EstudarLogo.png" alt="Logo da Fundação Estudar" height="150">
 
 
 ## O que é este curso?
